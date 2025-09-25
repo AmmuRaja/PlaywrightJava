@@ -1,0 +1,25 @@
+name: java setup
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+     branches: [ main ]
+
+jobs:
+  setup-java:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: set up java  
+        uses: actions/setup-java@v3
+        
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          
+      - name: verify java version
+        run: java -version
+     
